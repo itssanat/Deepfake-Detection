@@ -1,0 +1,16 @@
+body {
+    background: #fffbe6;
+    margin: 0px;
+    scroll-behavior: smooth;
+}
+
+#header {
+    background-color: #47143d;  /* #fedbd0  , #442c2e*/
+    text-align: center;
+    color: #b99750;
+    width: 100%;
+    font-size: 50px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-family: 'Times New Roman', Times, serif;
+}
