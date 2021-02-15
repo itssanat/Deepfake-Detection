@@ -1,5 +1,5 @@
 body {
-    background: #fffbe6;
+    background: whitesmoke;
     margin: 0px;
     scroll-behavior: smooth;
 }
@@ -13,4 +13,30 @@ body {
     padding-top: 5px;
     padding-bottom: 5px;
     font-family: 'Times New Roman', Times, serif;
+}
+
+.upload_form{
+    width: 500px;
+    height: 200px;
+    background-color: silver;
+    margin: auto;
+    border-radius: 10px;
+}
+
+.form{
+    padding: 40px;
+    font-size: 30px;
+    margin: auto;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.form button {
+    margin-top: 20px;
+    border-color: transparent;
+    height: 50px;
+    width: 200px;
+    border-radius: 5px;
+    background-color: #b99750;
+    color: #47143d;
+    font-size: 30px;
 }

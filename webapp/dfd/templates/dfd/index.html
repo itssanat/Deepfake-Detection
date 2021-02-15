@@ -11,20 +11,34 @@
     <div id='header'>
         Deepfake Detection
     </div>
-    <form class="form" method="POST" enctype="multipart/form-data" name="video-upload" id="video-upload">
+    <br>
+
+    {% comment %} video upload form {% endcomment %}
+    <div class="upload_form">
+      <form class="form" method="POST" enctype="multipart/form-data" name="video-upload" id="video-upload">
         {%csrf_token%}
-        <div class='form'>
-          <label>{{form.upload_video_file.widget}}</label>
-          {{form.video}}
-          {%if form.upload_video_file.errors%}
-            {%for each_error in form.upload_video_file.errors%}
+        <label>{{form.upload_video_file.widget}}</label>
+        {{form.video}}
+        {%if form.upload_video_file.errors%}
+          {%for each_error in form.upload_video_file.errors%}
             <div>
               {{each_error}}
             </div>
-            {%endfor%}
-          {%endif%}
-          </div>
+          {%endfor%}
+        {%endif%}
+        <br>
         <button id="videoUpload" type="submit" name="submit" >Upload</button>
       </form>
+    </div>
+
+
+    {% comment %} prediction result {% endcomment %}
+    {% if image_list %}
+      fgjbhnk
+    {% endif %}
+    {% if prediction %}
+      dgdsfgs
+    {% endif %}
+    
   </body>
 </html>
