@@ -11,5 +11,20 @@
     <div id='header'>
         Deepfake Detection
     </div>
+    <form class="form" method="POST" enctype="multipart/form-data" name="video-upload" id="video-upload">
+        {%csrf_token%}
+        <div class='form'>
+          <label>{{form.upload_video_file.widget}}</label>
+          {{form.video}}
+          {%if form.upload_video_file.errors%}
+            {%for each_error in form.upload_video_file.errors%}
+            <div>
+              {{each_error}}
+            </div>
+            {%endfor%}
+          {%endif%}
+          </div>
+        <button id="videoUpload" type="submit" name="submit" >Upload</button>
+      </form>
   </body>
 </html>
