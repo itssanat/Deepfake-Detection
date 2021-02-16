@@ -34,22 +34,27 @@
 
     {% comment %} prediction result {% endcomment %}
     {% if pred_result %}
-      <div id="pred_img">
-        {% for path , value in pred_result.items %}
-          {% if value %}
-            <img src="{% static path %}" alt="real">
+      <div id="">
+        <br>
+        <h1> Cropped faces with predicted result </h1>
+        <div id="pred_img">
+          {% for path , value in pred_result.items %}
+            {% if value %}
+              <img src="{% static path %}" alt="real">
+            {% else %}
+              <img src="{% static path %}" alt="fake">
+            {% endif %}
+          {% endfor %}
+        </div>
+        <br>
+        <div>
+          {% if isReal %}
+            <span class="label-real">Real</span>
           {% else %}
-            <img src="{% static path %}" alt="fake">
+            <span class="label-fake">Fake</span>
           {% endif %}
-        {% endfor %}
+        </div>
       </div>
-      <br>
-      <br>
-      {% if isReal %}
-        <span class="label-real">Real</span>
-      {% else %}
-        <span class="label-fake">Fake</span>
-      {% endif %}
     {% endif %}
     
   </body>
