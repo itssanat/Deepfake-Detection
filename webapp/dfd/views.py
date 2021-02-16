@@ -26,6 +26,10 @@ def predict(request):
     print(request.session['file_name'])
     cap = cv2.VideoCapture(request.session['file_name'])
     frameRate = cap.get(5)
+    real = 0
+    fake = 0
+    count = 0
+    pred_result = {}  # to store predition result 
     while cap.isOpened():
         frameId = cap.get(1)
         ret, frame = cap.read()
@@ -39,9 +43,23 @@ def predict(request):
                 x2 = d.right()
                 y2 = d.bottom()
                 crop_img = frame[y1:y2, x1:x2]
+
+                img_name = 'img_'+str(int(time.time()))+'_'+str(count)+'.png'
+                img_path = os.path.join(settings.BASE_DIR, 'temp_images', img_name)
+                cv2.imwrite( img_path , cv2.resize(crop_img, (128, 128)))
+
                 data = img_to_array(cv2.resize(crop_img, (128, 128))).flatten() / 255.0
                 data = data.reshape(-1, 128, 128, 3)
-                print(model.predict_classes(data))
+                pred = np.sum(model.predict_classes(data)).item()
+                print(pred)
+                if pred == 1:
+                    real = real + 1
+                else :
+                    fake = fake + 1
+                pred_result.update({img_name : pred})
+                count = count + 1
+    request.session['pred_result']=pred_result
+    return pred_result , True if real > fake else False
 
 
 def index(request):
@@ -49,8 +67,8 @@ def index(request):
         form = VideoForm()
         if 'file_name' in request.session:
             del request.session['file_name']
-        if 'faces_cropped_images' in request.session:
-            del request.session['faces_cropped_images']
+        if 'pred_result' in request.session:
+            del request.session['pred_result']
         return render(request , 'dfd/index.html' , {'form': form})
         
     else :
@@ -70,7 +88,10 @@ def index(request):
                 shutil.copyfileobj(video_file, vFile)
             request.session['file_name'] = os.path.join(settings.BASE_DIR, 'temp_videos', saved_video_file)
             print(request.session['file_name'])
-            predict(request)
+            pred_result , isReal = predict(request)
+            print(isReal)
+            print(pred_result)
+            return render(request, 'dfd/index.html', {'form': form, 'pred_result': pred_result, 'isReal': isReal})
 
-        return render(request , 'dfd/index.html' , {'form': form})
+        return render(request , 'dfd/index.html' , {'form': form, })
              

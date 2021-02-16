@@ -33,11 +33,23 @@
 
 
     {% comment %} prediction result {% endcomment %}
-    {% if image_list %}
-      fgjbhnk
-    {% endif %}
-    {% if prediction %}
-      dgdsfgs
+    {% if pred_result %}
+      <div id="pred_img">
+        {% for path , value in pred_result.items %}
+          {% if value %}
+            <img src="{% static path %}" alt="real">
+          {% else %}
+            <img src="{% static path %}" alt="fake">
+          {% endif %}
+        {% endfor %}
+      </div>
+      <br>
+      <br>
+      {% if isReal %}
+        <span class="label-real">Real</span>
+      {% else %}
+        <span class="label-fake">Fake</span>
+      {% endif %}
     {% endif %}
     
   </body>
