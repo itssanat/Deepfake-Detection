@@ -2,6 +2,7 @@ body {
     background: whitesmoke;
     margin: 0px;
     scroll-behavior: smooth;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 #header {
@@ -13,6 +14,10 @@ body {
     padding-top: 5px;
     padding-bottom: 5px;
     font-family: 'Times New Roman', Times, serif;
+}
+
+.content {
+    height: 100%;
 }
 
 .upload_form{
@@ -39,4 +44,48 @@ body {
     background-color: #b99750;
     color: #47143d;
     font-size: 30px;
+}
+
+#prediction_pane {
+    margin: auto;
+    text-align: center;
+}
+
+#prediction_pane h1 {
+    color: #47143d;
+}
+
+.real_image {
+    border: 5px solid #4CAF50;
+}
+
+.fake_image {
+    border: 5px solid #f44336;
+}
+
+.label-real{
+    margin-top: 50px;
+    color: white;
+    padding: 8px 50px 8px 50px;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    font-size: 40px;
+}
+
+.label-fake {
+    margin-top: 50px;
+    color: white;
+    padding: 8px 50px 8px 50px;
+    border-radius: 5px;
+    background-color: #f44336;
+    font-size: 40px;
+}
+
+.footer {
+    margin-top: 50px;
+    position: relative;
+    bottom: 0px;
+    width: 100%;
+    height: 10px;
+    background-color: #b99750;
 }

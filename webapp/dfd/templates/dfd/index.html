@@ -13,49 +13,52 @@
     </div>
     <br>
 
-    {% comment %} video upload form {% endcomment %}
-    <div class="upload_form">
-      <form class="form" method="POST" enctype="multipart/form-data" name="video-upload" id="video-upload">
-        {%csrf_token%}
-        <label>{{form.upload_video_file.widget}}</label>
-        {{form.video}}
-        {%if form.upload_video_file.errors%}
-          {%for each_error in form.upload_video_file.errors%}
-            <div>
-              {{each_error}}
-            </div>
-          {%endfor%}
-        {%endif%}
-        <br>
-        <button id="videoUpload" type="submit" name="submit" >Upload</button>
-      </form>
-    </div>
-
-
-    {% comment %} prediction result {% endcomment %}
-    {% if pred_result %}
-      <div id="">
-        <br>
-        <h1> Cropped faces with predicted result </h1>
-        <div id="pred_img">
-          {% for path , value in pred_result.items %}
-            {% if value %}
-              <img src="{% static path %}" alt="real">
-            {% else %}
-              <img src="{% static path %}" alt="fake">
-            {% endif %}
-          {% endfor %}
-        </div>
-        <br>
-        <div>
-          {% if isReal %}
-            <span class="label-real">Real</span>
-          {% else %}
-            <span class="label-fake">Fake</span>
-          {% endif %}
-        </div>
+    <div class="content">
+      {% comment %} video upload form {% endcomment %}
+      <div class="upload_form">
+        <form class="form" method="POST" enctype="multipart/form-data" name="video-upload" id="video-upload">
+          {%csrf_token%}
+          <label>{{form.upload_video_file.widget}}</label>
+          {{form.video}}
+          {%if form.upload_video_file.errors%}
+            {%for each_error in form.upload_video_file.errors%}
+              <div>
+                {{each_error}}
+              </div>
+            {%endfor%}
+          {%endif%}
+          <br>
+          <button id="videoUpload" type="submit" name="submit" >Upload</button>
+        </form>
       </div>
-    {% endif %}
-    
+
+
+      {% comment %} prediction result {% endcomment %}
+      {% if pred_result %}
+        <div id="prediction_pane">
+          <br>
+          <h1> Cropped faces with predicted result </h1>
+          <div id="pred_img">
+            {% for path , value in pred_result.items %}
+              {% if value %}
+                <img class="real_image" src="{% static path %}" alt="real">
+              {% else %}
+                <img class="fake_image" src="{% static path %}" alt="fake">
+              {% endif %}
+            {% endfor %}
+          </div>
+          <br>
+          <div>
+            {% if isReal %}
+              <span class="label-real">Real</span>
+            {% else %}
+              <span class="label-fake">Fake</span>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+    <div class="footer">
+    </div>
   </body>
 </html>

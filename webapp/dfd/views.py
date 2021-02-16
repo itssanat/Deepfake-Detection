@@ -84,16 +84,16 @@ def index(request):
             saved_video_file = 'uploaded_file_'+str(int(time.time()))+"."+video_file_ext
             print(saved_video_file)
             print(settings.BASE_DIR)
-            with open(os.path.join(settings.BASE_DIR, 'temp_videos', saved_video_file), 'wb') as vFile:
-                shutil.copyfileobj(video_file, vFile)
+            # with open(os.path.join(settings.BASE_DIR, 'temp_videos', saved_video_file), 'wb') as vFile:
+            #     shutil.copyfileobj(video_file, vFile)
             request.session['file_name'] = os.path.join(settings.BASE_DIR, 'temp_videos', saved_video_file)
             print(request.session['file_name'])
             # pred_result , isReal = predict(request)
-            pred_result = {'img_1613472231_0.png': 0, 'img_1613472235_1.png': 0, 'img_1613472236_2.png': 0, 
+            pred_result = {'img_1613472231_0.png': 1, 'img_1613472235_1.png': 0, 'img_1613472236_2.png': 0, 
                         'img_1613472236_3.png': 0, 'img_1613472237_4.png': 0, 'img_1613472238_5.png': 0, 
                         'img_1613472238_6.png': 0, 'img_1613472239_7.png': 0, 'img_1613472239_8.png': 0, 
-                        'img_1613472240_9.png': 0}
-            isReal = False
+                        'img_1613472240_9.png': 1}
+            isReal = True
             print(isReal)
             print(pred_result)
             return render(request, 'dfd/index.html', {'form': form, 'pred_result': pred_result, 'isReal': isReal})
