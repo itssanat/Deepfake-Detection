@@ -5,6 +5,10 @@ body {
     font-family: 'Times New Roman', Times, serif;
 }
 
+.content-view {
+    min-height: 100vh;
+}
+
 #header {
     background-color: #47143d;  /* #fedbd0  , #442c2e*/
     text-align: center;
@@ -16,16 +20,15 @@ body {
     font-family: 'Times New Roman', Times, serif;
 }
 
-.content {
-    height: 100%;
-}
+
 
 .upload_form{
     width: 500px;
     height: 200px;
-    background-color: silver;
+    background-color: #dce1e3;
     margin: auto;
     border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .form{
@@ -46,6 +49,11 @@ body {
     font-size: 30px;
 }
 
+#videoUpload:hover{
+    background-color: #47143d;
+    color: #b99750;
+}
+
 #prediction_pane {
     margin: auto;
     text-align: center;
@@ -53,6 +61,28 @@ body {
 
 #prediction_pane h1 {
     color: #47143d;
+}
+
+.pred_img {
+    overflow-x: scroll;
+    white-space: nowrap;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 30px;
+    background-color: #dce1e3;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.pred_img img {
+    display: inline-block;
+    margin: 2px;
+}
+
+.pred_img img:hover {
+    transform: scale(1.25);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .real_image {

@@ -8,12 +8,15 @@
     <title>Deepfake Detection</title>
   </head>
   <body>
-    <div id='header'>
-        Deepfake Detection
-    </div>
-    <br>
+    <div class="content-view">
 
-    <div class="content">
+      {% comment %} Header {% endcomment %}
+      <div id='header'>
+        Deepfake Detection
+      </div>
+      <br>
+
+
       {% comment %} video upload form {% endcomment %}
       <div class="upload_form">
         <form class="form" method="POST" enctype="multipart/form-data" name="video-upload" id="video-upload">
@@ -28,7 +31,7 @@
             {%endfor%}
           {%endif%}
           <br>
-          <button id="videoUpload" type="submit" name="submit" >Upload</button>
+          <button id="videoUpload" type="submit" name="submit" >submit</button>
         </form>
       </div>
 
@@ -38,7 +41,7 @@
         <div id="prediction_pane">
           <br>
           <h1> Cropped faces with predicted result </h1>
-          <div id="pred_img">
+          <div class="pred_img">
             {% for path , value in pred_result.items %}
               {% if value %}
                 <img class="real_image" src="{% static path %}" alt="real">
@@ -58,6 +61,8 @@
         </div>
       {% endif %}
     </div>
+
+    {% comment %} footer {% endcomment %}
     <div class="footer">
     </div>
   </body>
