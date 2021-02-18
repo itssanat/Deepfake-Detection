@@ -123,6 +123,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'temp_images'),
+    os.path.join(BASE_DIR, 'temp_videos'),
 ]
 
 MEDIA_URL = "/media/"

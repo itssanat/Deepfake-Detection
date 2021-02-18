@@ -84,8 +84,8 @@ def index(request):
             saved_video_file = 'uploaded_file_'+str(int(time.time()))+"."+video_file_ext
             print(saved_video_file)
             print(settings.BASE_DIR)
-            # with open(os.path.join(settings.BASE_DIR, 'temp_videos', saved_video_file), 'wb') as vFile:
-            #     shutil.copyfileobj(video_file, vFile)
+            with open(os.path.join(settings.BASE_DIR, 'temp_videos', saved_video_file), 'wb') as vFile:
+                shutil.copyfileobj(video_file, vFile)
             request.session['file_name'] = os.path.join(settings.BASE_DIR, 'temp_videos', saved_video_file)
             print(request.session['file_name'])
             # pred_result , isReal = predict(request)
@@ -97,7 +97,7 @@ def index(request):
             print(isReal)
             print(pred_result)
             return render(request, 'dfd/index.html', {'form': form, 'pred_result': pred_result, 
-                                'isReal': isReal, 'videoName': video_file.name})
+                            'isReal': isReal, 'videoName': video_file.name, 'saved_video_file': saved_video_file})
 
         return render(request , 'dfd/index.html' , {'form': form, })
              

@@ -21,7 +21,7 @@
       <div class="upload_form">
         <form class="form" method="POST" enctype="multipart/form-data" name="video-upload" id="video-upload">
           {%csrf_token%}
-          <label>{{form.upload_video_file.widget}}</label>
+          {% comment %} <label>{{form.video.widget}}</label> {% endcomment %}
           {{form.video}}
           {%if form.upload_video_file.errors%}
             {%for each_error in form.upload_video_file.errors%}
@@ -42,6 +42,14 @@
           <br>
           <h1> Cropped faces with predicted result </h1>
           <h2 style="color: gray;" >{{ videoName }}</h2>
+          <br>
+          <video width="320" height="240" controls>
+            <source src="{% static saved_video_file %}" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+
+          <br>
+                    
           <div class="pred_img">
             {% for path , value in pred_result.items %}
               {% if value %}
