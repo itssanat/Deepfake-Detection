@@ -41,6 +41,7 @@
         <div id="prediction_pane">
           <br>
           <h1> Cropped faces with predicted result </h1>
+          <h2 style="color: gray;" >{{ videoName }}</h2>
           <div class="pred_img">
             {% for path , value in pred_result.items %}
               {% if value %}

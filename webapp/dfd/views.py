@@ -96,7 +96,8 @@ def index(request):
             isReal = True
             print(isReal)
             print(pred_result)
-            return render(request, 'dfd/index.html', {'form': form, 'pred_result': pred_result, 'isReal': isReal})
+            return render(request, 'dfd/index.html', {'form': form, 'pred_result': pred_result, 
+                                'isReal': isReal, 'videoName': video_file.name})
 
         return render(request , 'dfd/index.html' , {'form': form, })
              
